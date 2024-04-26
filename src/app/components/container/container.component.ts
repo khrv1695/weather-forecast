@@ -32,4 +32,8 @@ export class ContainerComponent implements OnInit, OnChanges {
       this.ForecastData = res;
     })
   }
+  setCity(event: any) {
+    this.cities.push(event.target.value)
+    this.OnHeaderSelected(event.target.value);
+  }
 }

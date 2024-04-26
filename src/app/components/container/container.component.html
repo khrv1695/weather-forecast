@@ -1,3 +1,5 @@
+<h1>Weather Forecast</h1>
+<input type="text" placeholder="search for a city" (keyup.enter)="setCity($event)">
 <ul>
     <li class="city" *ngFor="let city of cities">
         <app-tab-header [DisplayName]="city" [selected]="city == selectedCity"

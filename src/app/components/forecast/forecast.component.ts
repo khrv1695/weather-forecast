@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ForecastComponent {
 
-  @Input() temparature: string = "";
+  @Input() temparature: any = 0.0;
   @Input() time: string = "";
   @Input() humidity: string = "";
   @Input() iconName: string = "";

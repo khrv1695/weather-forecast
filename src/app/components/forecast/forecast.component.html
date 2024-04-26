@@ -1,4 +1,4 @@
-<div>{{temparature}}</div>
-<div>{{humidity}}</div>
+<div class="temparature">{{(temparature - 273.15).toFixed(2)}} &deg;</div>
+<div>{{humidity}} %</div>
 <img *ngIf="iconName" [src]='imgbaseUrl + this.iconName + "@2x.png"'>
 <div>{{time}}</div>
