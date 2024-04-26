@@ -12,4 +12,28 @@ import { ForecastDetailComponent } from '../forecast-detail/forecast-detail.comp
 })
 export class TabContentComponent {
   @Input() ForecastData: any;
+  @Input() DayForecastData: any;
+  getForecastDayData() {
+    if (!this.ForecastData)
+      return []
+    var data = this.DayForecastData.map((d: any) => ({ dt: d.dt_txt.slice(5, 10), min: d.main.temp_min, max: d.main.temp_max }))
+    const groupBy = (arr: any[]) => arr.reduce((acc: any, ele: { dt: string | number; }) => ((acc[ele.dt] = acc[ele.dt] || []).push(ele), acc), {})
+
+    const max = (arr: any) => Math.max(...arr.map((res: { max: any; }) => res.max))
+    const min = (arr: any) => Math.min(...arr.map((res: { min: any; }) => res.min))
+
+
+    var forecast = Object.entries(groupBy(data)).map(([key, val]) => ({
+      date: key, min: min(val), max: max(val),
+    }))
+    return forecast.splice(1, 10);
+  }
+
+  getDayDescription(day: string): any {
+    return this.ForecastData.list.filter((f: { dt_txt: string; }) => f.dt_txt.slice(5, 10) == day)[0].weather[0].description
+  }
+
+  getDayImage(day: string): any {
+    return this.ForecastData.list.filter((f: { dt_txt: string; }) => f.dt_txt.slice(5, 10) == day)[0].weather[0].icon
+  }
 }

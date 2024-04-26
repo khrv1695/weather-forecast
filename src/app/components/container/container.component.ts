@@ -16,6 +16,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class ContainerComponent implements OnInit, OnChanges {
   selectedCity: string = "";
   ForecastData: any;
+  DayForecastData: any;
   constructor(private weatherForecastService: WeatherForecastService) {
 
   }
@@ -30,6 +31,7 @@ export class ContainerComponent implements OnInit, OnChanges {
     this.selectedCity = city;
     this.weatherForecastService.getForecast(city).subscribe((res) => {
       this.ForecastData = res;
+      this.DayForecastData = res.list;
     })
   }
   setCity(event: any) {
