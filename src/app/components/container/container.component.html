@@ -1,0 +1,7 @@
+<ul>
+    <li class="city" *ngFor="let city of cities">
+        <app-tab-header [DisplayName]="city" [selected]="city == selectedCity"
+            (OnHeaderSelected)="OnHeaderSelected($event)"></app-tab-header>
+    </li>
+</ul>
+<app-tab-content [ForecastData]="ForecastData"></app-tab-content>
