@@ -11,6 +11,7 @@ import { Component, Input } from '@angular/core';
 export class ForecastDetailComponent {
   @Input() minTemparature: any = 0.0;
   @Input() maxTemparature: any = 0.0;
+  @Input() day: string = "";
   @Input() time: string = "";
   @Input() description: string = "";
   @Input() iconName: string = "";

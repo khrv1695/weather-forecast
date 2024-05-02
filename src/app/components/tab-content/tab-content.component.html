@@ -8,6 +8,7 @@
     <div class="header">Next 5 days</div>
     <div class="forecast-detail-container" *ngFor="let day of getForecastDayData()">
         <app-forecast-detail [description]="getDayDescription(day.date)" [minTemparature]="day.min"
-            [maxTemparature]="day.max" [time]="day.date" [iconName]="getDayImage(day.date)"></app-forecast-detail>
+            [maxTemparature]="day.max" [time]="day.date" [day]="getDay(day.date)"
+            [iconName]="getDayImage(day.date)"></app-forecast-detail>
     </div>
 </div>

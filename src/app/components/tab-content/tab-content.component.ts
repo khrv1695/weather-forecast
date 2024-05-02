@@ -33,6 +33,10 @@ export class TabContentComponent {
     return this.ForecastData.list.filter((f: { dt_txt: string; }) => f.dt_txt.slice(5, 10) == day)[0].weather[0].description
   }
 
+  getDay(day: string): any {
+    return new Date(this.ForecastData.list.filter((f: { dt_txt: string; }) => f.dt_txt.slice(5, 10) == day)[0].dt_txt).toString().slice(0, 3)
+  }
+
   getDayImage(day: string): any {
     return this.ForecastData.list.filter((f: { dt_txt: string; }) => f.dt_txt.slice(5, 10) == day)[0].weather[0].icon
   }
