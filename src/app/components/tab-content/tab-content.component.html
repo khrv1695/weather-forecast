@@ -1,6 +1,6 @@
-<div *ngIf="ForecastData">
+<div *ngIf="foreCastData">
     <div class="header">Next Hours</div>
-    <li class="forecast-container" *ngFor="let day of ForecastData.list.slice(0,4)">
+    <li class="forecast-container" *ngFor="let day of foreCastData.list.slice(0,4)">
         <app-forecast [humidity]="day.main.humidity" [temparature]="day.main.temp" [time]="day.dt_txt.slice(5,16)"
             [iconName]="day.weather[0].icon"></app-forecast>
     </li>

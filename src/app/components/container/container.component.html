@@ -1,6 +1,5 @@
 <div class="container">
-    <div class="header">Simple Weather</div>
-    <input class="search" type="text" placeholder="search for a city" (keyup.enter)="setCity($event)">
+    <div class="header">Simple Weather <input class="search" type="text" placeholder="Enter City Name" (keyup.enter)="setCity($event)"></div>   
     <ul>
         <li class="city" *ngFor="let city of cities">
             <app-tab-header [DisplayName]="city" [selected]="city == selectedCity"
@@ -8,6 +7,6 @@
         </li>
     </ul>
     <div class="content">
-        <app-tab-content [ForecastData]="ForecastData" [DayForecastData]="DayForecastData"></app-tab-content>
+        <app-tab-content [foreCastData]="foreCastData" [dayForecastData]="dayForecastData"></app-tab-content>
     </div>
 </div>

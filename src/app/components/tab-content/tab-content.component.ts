@@ -11,12 +11,12 @@ import { ForecastDetailComponent } from '../forecast-detail/forecast-detail.comp
   styleUrl: './tab-content.component.sass'
 })
 export class TabContentComponent {
-  @Input() ForecastData: any;
-  @Input() DayForecastData: any;
+  @Input() foreCastData: any;
+  @Input() dayForecastData: any;
   getForecastDayData() {
-    if (!this.ForecastData)
+    if (!this.foreCastData)
       return []
-    var data = this.DayForecastData.map((d: any) => ({ dt: d.dt_txt.slice(5, 10), min: d.main.temp_min, max: d.main.temp_max }))
+    var data = this.dayForecastData.map((d: any) => ({ dt: d.dt_txt.slice(5, 10), min: d.main.temp_min, max: d.main.temp_max }))
     const groupBy = (arr: any[]) => arr.reduce((acc: any, ele: { dt: string | number; }) => ((acc[ele.dt] = acc[ele.dt] || []).push(ele), acc), {})
 
     const max = (arr: any) => Math.max(...arr.map((res: { max: any; }) => res.max))
@@ -30,14 +30,14 @@ export class TabContentComponent {
   }
 
   getDayDescription(day: string): any {
-    return this.ForecastData.list.filter((f: { dt_txt: string; }) => f.dt_txt.slice(5, 10) == day)[0].weather[0].description
+    return this.foreCastData.list.filter((f: { dt_txt: string; }) => f.dt_txt.slice(5, 10) == day)[0].weather[0].description
   }
 
   getDay(day: string): any {
-    return new Date(this.ForecastData.list.filter((f: { dt_txt: string; }) => f.dt_txt.slice(5, 10) == day)[0].dt_txt).toString().slice(0, 3)
+    return new Date(this.foreCastData.list.filter((f: { dt_txt: string; }) => f.dt_txt.slice(5, 10) == day)[0].dt_txt).toString().slice(0, 3)
   }
 
   getDayImage(day: string): any {
-    return this.ForecastData.list.filter((f: { dt_txt: string; }) => f.dt_txt.slice(5, 10) == day)[0].weather[0].icon
+    return this.foreCastData.list.filter((f: { dt_txt: string; }) => f.dt_txt.slice(5, 10) == day)[0].weather[0].icon
   }
 }

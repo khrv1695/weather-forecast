@@ -4,23 +4,25 @@ import { TabHeaderComponent } from '../tab-header/tab-header.component';
 import { TabContentComponent } from '../tab-content/tab-content.component';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-container',
   standalone: true,
-  imports: [TabHeaderComponent, TabContentComponent, CommonModule, HttpClientModule],
+  imports: [TabHeaderComponent, TabContentComponent, CommonModule, HttpClientModule, MatFormFieldModule, MatIconModule],
   templateUrl: './container.component.html',
   styleUrl: './container.component.sass',
   providers: [HttpClient]
 })
 export class ContainerComponent implements OnInit, OnChanges {
   selectedCity: string = "";
-  ForecastData: any;
-  DayForecastData: any;
+  foreCastData: any;
+  dayForecastData: any;
   constructor(private weatherForecastService: WeatherForecastService) {
 
   }
-  cities = ["california", "new york", "new jersey"]
+  cities = ["dallas", "atlanta", "virginia"]
   ngOnChanges(changes: SimpleChanges): void {
   }
   ngOnInit(): void {
@@ -30,8 +32,8 @@ export class ContainerComponent implements OnInit, OnChanges {
   OnHeaderSelected(city: string) {
     this.selectedCity = city;
     this.weatherForecastService.getForecast(city).subscribe((res) => {
-      this.ForecastData = res;
-      this.DayForecastData = res.list;
+      this.foreCastData = res;
+      this.dayForecastData = res.list;
     })
   }
   setCity(event: any) {

@@ -2,7 +2,7 @@
     <img height="50px" width="50px" *ngIf="iconName" [src]='imgbaseUrl + this.iconName + "@2x.png"'>
     <div class="desc-container">
         <div class="time">{{day}}, {{time}}</div>
-        <div class="description">{{description}}</div>
+        <div class="description">{{description| titlecase}}</div>
     </div>
     <div class="temparature">{{(minTemparature - 273.15).toFixed(0)}} &deg;</div>
     <div class="temparature">{{(maxTemparature - 273.15).toFixed(0)}} &deg;</div>
